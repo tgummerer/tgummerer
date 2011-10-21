@@ -33,13 +33,13 @@
     title="{{ resource.prev_by_time.meta.title }}"
     {% if resource.prev_by_time %}
     href="{{ content_url(resource.prev_by_time.url) }}"{% endif %}>
-    << Previous
+    Previous
 </a> - 
 <a class="next{{' disabled' if not resource.next_by_time }}"
     title="{{ resource.next_by_time.meta.title }}"
     {% if resource.next_by_time %}
     href="{{ content_url(resource.next_by_time.url) }}"{% endif %}>
-    Next >>
+    Next
 </a>
 
 <br>
@@ -49,18 +49,22 @@
 <div id="twitter_share" class="col_1">
 <a href="http://twitter.com/share"
     class="twitter-share-button"
-    data-count="vertical"
+    data-count="horizontal"
     data-via="{{ tweet_via }}">Tweet</a>
     <script type="text/javascript"
         src="http://platform.twitter.com/widgets.js"></script>
 </div>
-<div id="facebook_like" class="col_1">
-<iframe src="http://www.facebook.com/plugins/like.php?href&amp;layout=box_count&amp;show_faces=false&amp;width=450&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=65"
-            scrolling="no"
-            frameborder="0"
-            style="border:none; overflow:hidden; width:450px; height:65px;"
-            allowTransparency="true"></iframe>
-</div>
+<!-- Place this tag where you want the +1 button to render -->
+<g:plusone size="medium"></g:plusone>
+
+<!-- Place this render call where appropriate -->
+<script type="text/javascript">
+(function() {
+ var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+ po.src = 'https://apis.google.com/js/plusone.js';
+ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+ })();
+</script>
 </div>
 
 </article>

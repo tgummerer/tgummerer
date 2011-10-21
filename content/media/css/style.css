@@ -84,7 +84,46 @@ time {
     color: #999;
 }
 
-.tags li {
+.tags {
     font-size: 12pt;
     list-style: none;
+}
+
+.tags li {
+    list-style: none;
+    margin-left: 0px;
+    float: left;
+    padding-right: 5px;
+}
+
+.tags li a:before {
+    content: '\00AB';
+}
+
+.tags li a:after {
+    content: '\00BB';
+} 
+
+.post_nav {
+    font-size: 12pt;
+}
+
+.post_nav .disabled {
+    color: #333;
+}
+
+a.prev:before {
+    content: '\00AB';
+}
+
+a.next:after {
+    content: '\00BB';
+}
+
+#twitter_share {
+    margin-right: 50px;
+}
+
+.fb-like span {
+    height: 20px;
 }

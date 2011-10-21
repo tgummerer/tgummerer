@@ -10,9 +10,9 @@
 </article>
 {% endmacro %}
 
-{% macro render_nav(menu, cls=None) -%}
+{% macro render_nav(menu) -%}
 {% if menu -%}
-<nav {{'class='~cls if cls }}>
+<nav class="main-nav col_3 last">
     {% for item in menu -%}
     {% set active = False -%}
     {% if item.type == 'page' -%}
@@ -22,9 +22,7 @@
         {% set active = (node ==
             site.content.node_from_relative_path(item.url)) -%}
     {%- endif %}
-    {% set classes = ['button', 'white'] -%}
     {% do classes.append('active') if active -%}
-    {% do classes.append(item.css_class) if item.css_class -%}
         <a title="{{ item.description }}"
             class="{{ classes|join(' ') }}"
             href="{{ content_url(item.url) }}">
