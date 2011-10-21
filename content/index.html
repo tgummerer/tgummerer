@@ -1,20 +1,14 @@
 ---
 extends: base.j2
 default_block: main
-title: BASIC - A hyde website
-description: Home page for the BASIC hyde template
+title: Thomas Gummerer
+description: Website of Thomas Gummerer, powered by hyde
 ---
 
-{% from "macros.j2" import render_excerpt with context %}
-<section class="blog_excerpt">
-{% set latest = site.content.walk_resources_sorted_by_time()|first %}
-
-{% if latest -%}
-{{ render_excerpt(latest, 'post') }}
-
-<a class="button white medium"
-    href="{{ content_url(latest.url) }}">Read more&hellip;</a>
-
-{%- endif %}
-
-</section>
+<div class="index">
+    Welcome to my website.<br />
+    <br />
+    You can find me on <a href="https://twitter.com/tgummerer">Twitter</a>, <a href="https://plus.google.com/116453060536202841699/posts">Google+</a> and <a href="https://github.com/tgummerer/">GitHub</a>.<br />
+    <br />
+    You can also contact me via <a href="mailto:info [at} tgummerer {dot] com">Email</a>.
+</div>

@@ -13,33 +13,46 @@
        Remove this if you use the .htaccess -->
   <meta http-equiv="X-UA-Compatible" content="{{ resource.meta.compatibility }}">
 
-  <!-- encoding must be specified within the first 512 bytes
-        www.whatwg.org/specs/web-apps/current-work/multipage/semantics.html#charset -->
-
-  <!-- meta element for compatibility mode needs to be before
-        all elements except title & meta
-        msdn.microsoft.com/en-us/library/cc288325(VS.85).aspx -->
-  <!-- Chrome Frame is only invoked if meta element for
-        compatibility mode is within the first 1K bytes
-        code.google.com/p/chromium/issues/detail?id=23003 -->
-
   <title>{% block title %}{{ resource.meta.title }}{% endblock %}</title>
   <meta name="description" content="{{ resource.meta.description }}">
   <meta name="author" content="{{ resource.meta.author }}">
 
-  <!--  Mobile viewport optimized: j.mp/bplateviewport -->
-  <meta name="viewport" content="{{ resource.meta.viewport }}">
-
   {% block favicons %}
-  <!-- Place favicon.ico & apple-touch-icon.png
-        in the root of your domain and delete these references -->
+  <!-- Place favicon.ico in the root of your domain and delete these references -->
   <link rel="shortcut icon" href="{{ media_url('/favicon.ico') }}">
-  <link rel="apple-touch-icon" href="{{ media_url('/apple-touch-icon.png') }}">
   {% endblock favicons %}
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  
+    <!-- The Columnal Grid (base, load first) -->
+    <link rel="stylesheet" href="{{ media_url('css/columnal.css') }}" type="text/css" media="screen" />
+
+    <!-- Fixes for IE -->
+	<!--[if lt IE 9]>
+    <link rel="stylesheet" href="{{ media_url('css/ie.css') }}" type="text/css" media="screen" />
+	<![endif]-->
+
+	<!-- use "fixed-984px-ie.css" or "fixed-960px-ie.css for a 984px or 960px fixed width for IE6 and 7 -->
+	<!--[if lte IE 7]>
+    <link rel="stylesheet" href="{{ media_url('css/fixed-984px-ie.css') }}" type="text/css" media="screen" />
+	<![endif]-->
+	
+    <!-- Fixes for IE6, only needed if IE 6 will be supported - width must match 984px or 960px of css file used above -->
+    <!-- Use .imagescale to fix IE6 issues with full-column width images (class must be added to any image wider than the column it is placed into) -->
+        <!--[if lte IE 6]>
+        <link rel="stylesheet" href="{{ media_url('css/ie6-984px.css') }}" type="text/css" media="screen" />
+        <![endif]-->
+      <!-- End fixes for IE -->
+
+    <!-- Page building tools - Gray box colors and page debugging tools -->
+    <link rel="stylesheet" href="{{ media_url('css/build.css') }}" type="text/css" media="screen" />
+
 
   {% block css %}
-  <link rel="stylesheet" href="{{ media_url('css/site.css') }}">
-  <link rel="stylesheet" href="{{ media_url('css/syntax.css') }}">
+  <link rel="stylesheet" href="{{ media_url('css/style.css') }}">
+  <link href='http://fonts.googleapis.com/css?family=IM+Fell+Double+Pica+SC' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Modern+Antiqua&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=IM+Fell+Great+Primer' rel='stylesheet' type='text/css'>
   {% endblock css %}
 
   {% block headjs %}
@@ -50,52 +63,52 @@
   {% block endhead %}{% endblock endhead %}
 </head>
 <body id="{{ resource.meta.id if resource.meta.id else resource.slug }}">
-  {% block content %}
-  <div id="container">
-      {% block container %}
-      <div id="main" role="main">
-          <header class="banner clearfix">
-          {% block header -%}
-            <h1>BASIC</h1>
-            <h3>A hyde website</h3>
-          {%- endblock %}
-          {% block nav %}
-          {% from "macros.j2" import render_nav with context %}
-          {{ render_nav(menu, 'main_nav') }}
-          {% endblock %}
-          </header>
-          <section class="content">
-          {% block main %}
-          {% endblock main %}
-          </section>
-      </div>
-    {% endblock container %}
-  </div> <!--! end of #container -->
-  <footer>
-      Powered by <a href="http://ringce.com/hyde">hyde</a>.
-  </footer>
-  {% endblock content%}
-  {% block js %}
-  <!-- Javascript at the bottom for fast page loading -->
-  {% block jquery %}
-  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
-  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.5.1.min.js">\x3C/script>')</script>
-  {% endblock jquery %}
+    {% block content %}
+    <div class="container">
+        {% block container %}
+        <header class="row">
+        {% block header -%}
+            <div class="col_3 suf_6 home">
+                <a href="/" class="home">thomas gummerer</a>
+            </div>
+        {% endblock %}
+        {% block nav %}
+            {% from "macros.j2" import render_nav with context %}
+            {{ render_nav(menu, 'main-nav col_3 last') }}
+        {% endblock %}
+        </header>
+        <section class="content row">
+        {% block main %}
+        {% endblock main %}
+        </section>
+        {% endblock container %}
+        <footer class="row">
+            Powered by <a href="http://ringce.com/hyde">hyde</a> | Copyright (c) Thomas Gummerer 2011 All rights reserved.
+        </footer>
+    </div> <!--! end of #container -->
 
-  {% block scripts %}
-  {% endblock scripts %}
+    {% endblock content%}
+    {% block js %}
+    <!-- Javascript at the bottom for fast page loading -->
+    {% block jquery %}
+    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+    <script>window.jQuery || document.write('<script src="js/libs/jquery-1.5.1.min.js">\x3C/script>')</script>
+    {% endblock jquery %}
+
+    {% block scripts %}
+    {% endblock scripts %}
 
 
-  <!--[if lt IE 7 ]>
+    <!--[if lt IE 7 ]>
     <script src="js/libs/dd_belatedpng.js"></script>
     <script>DD_belatedPNG.fix('img, .png_bg'); // Fix any <img> or .png_bg bg-images. Also, please read goo.gl/mZiyb </script>
-  <![endif]-->
+    <![endif]-->
 
-  {% block analytics %}
-  {% include "analytics.j2" %}
-  {% endblock analytics %}
+    {% block analytics %}
+    {% include "analytics.j2" %}
+    {% endblock analytics %}
 
-  {% endblock js %}
-</body>
+    {% endblock js %}
+    </body>
 </html>

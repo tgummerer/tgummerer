@@ -13,28 +13,24 @@
 {% macro render_nav(menu, cls=None) -%}
 {% if menu -%}
 <nav {{'class='~cls if cls }}>
-    <ul>
-        {% for item in menu -%}
-        {% set active = False -%}
-        {% if item.type == 'page' -%}
-            {% set active = (resource.url ==
-                site.content.resource_from_relative_path(item.url).url) -%}
-        {% else -%}
-            {% set active = (node ==
-                site.content.node_from_relative_path(item.url)) -%}
-        {%- endif %}
-        {% set classes = ['button', 'white'] -%}
-        {% do classes.append('active') if active -%}
-        {% do classes.append(item.css_class) if item.css_class -%}
-        <li>
-            <a title="{{ item.description }}"
-                class="{{ classes|join(' ') }}"
-                href="{{ content_url(item.url) }}">
-                {{ item.name }}
-            </a>
-        </li>
-        {%- endfor %}
-    </ul>
+    {% for item in menu -%}
+    {% set active = False -%}
+    {% if item.type == 'page' -%}
+        {% set active = (resource.url ==
+            site.content.resource_from_relative_path(item.url).url) -%}
+    {% else -%}
+        {% set active = (node ==
+            site.content.node_from_relative_path(item.url)) -%}
+    {%- endif %}
+    {% set classes = ['button', 'white'] -%}
+    {% do classes.append('active') if active -%}
+    {% do classes.append(item.css_class) if item.css_class -%}
+        <a title="{{ item.description }}"
+            class="{{ classes|join(' ') }}"
+            href="{{ content_url(item.url) }}">
+            {{ item.name }}
+        </a>{% if not loop.last %} - {% endif %}
+    {%- endfor %}
 </nav>
 {%- endif %}
 {%- endmacro %}

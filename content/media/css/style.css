@@ -1,0 +1,90 @@
+body{
+    font-family: 'IM Fell Great Primer', serif;
+    font-size: 16pt;
+    color: #333;
+} 
+
+.main-nav {
+    padding-top: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.main-nav a {
+    font-size: 16pt;
+    text-align: center;
+    text-decoration: none;
+    color: #f78400;
+    text-shadow: 0 2px 0 #EEE;
+}
+
+.main-nav a:hover {
+    color: #666;
+}
+
+.home {
+    color: #666;
+    font-size: 16pt;
+    padding-top: 10px;
+}
+
+.home:hover {
+    color: #f78400;
+}
+
+.index {
+    text-align: center;
+}
+
+
+h1 {
+    font-size: 30pt;
+}
+
+h2 {
+    font-size: 26pt;
+}
+
+h3 {
+    font-size: 22pt;
+}
+
+h3 a {
+    font-size: 26pt;
+    color: #333;
+    text-decoration: none;
+}
+
+h3 a:hover {
+    color: #f78400;
+}
+
+a {
+    color: #f78400;
+    text-shadow: 0 2px 0 #EEE;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #666;
+}
+
+section .content img {
+    text-align: center;
+}
+
+footer {
+    font-size: 8pt;
+    margin-top: 20px;
+    text-align: center;
+}
+
+time {
+    font-size: 12pt;
+    color: #999;
+}
+
+.tags li {
+    font-size: 12pt;
+    list-style: none;
+}
