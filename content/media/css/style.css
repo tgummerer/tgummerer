@@ -41,6 +41,10 @@ h1 {
     font-size: 30pt;
 }
 
+h1.title {
+    margin-top: 15px;
+}
+
 h2 {
     font-size: 26pt;
 }
@@ -126,4 +130,12 @@ a.next:after {
 
 .fb-like span {
     height: 20px;
+}
+
+.blogpost {
+    text-align: center;
+}
+
+.listingtitle {
+    margin-top: 10px;
 }

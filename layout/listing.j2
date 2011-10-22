@@ -1,13 +1,9 @@
 {% extends "base.j2" %}
 {% from "macros.j2" import render_excerpt with context  %}
 {% block main %}
-{% block page_title %}<h2 class="title">{{ resource.meta.title }}</h2>{% endblock %}
-
-<ul class="listing clear">
 {% for res in resource.node.walk_resources_sorted_by_time() %}
-<li>
+<div class="blogpost col_4{% if loop.index % 3 == 0 %} last{% endif %}">
     {{ render_excerpt(res) }}
-</li>
+</div>
 {% endfor %}
-</ul>
 {% endblock %}
