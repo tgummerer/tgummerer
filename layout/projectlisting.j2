@@ -1,0 +1,9 @@
+{% extends "base.j2" %}
+{% from "macros.j2" import render_projectexcerpt with context  %}
+{% block main %}
+{% for res in resource.node.walk_resources_sorted_by_time() %}
+<div class="blogpost col_4{% if loop.index % 3 == 0 %} last{% endif %}">
+    {{ render_projectexcerpt(res) }}
+</div>
+{% endfor %}
+{% endblock %}

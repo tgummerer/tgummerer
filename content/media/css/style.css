@@ -125,11 +125,8 @@ a.next:after {
 }
 
 #twitter_share {
-    margin-right: 50px;
-}
-
-.fb-like span {
-    height: 20px;
+    margin-right: 5px;
+    float:left;
 }
 
 .blogpost {
