@@ -8,18 +8,6 @@
     </a>
 </h1>
 
-{% if resource.meta.tags %}
-<ul class="tags clear">
-{% for tag in resource.meta.tags %}
-<li>
-    <a class="small" href="{{ content_url('blog/tags/'~tag~'.html') }}">
-        {{ tag }}
-    </a>
-</li>
-{% endfor %}
-</ul>
-<br />
-{% endif %}
 {% filter markdown|typogrify -%}
 {% mark project -%}
 {% block project -%}{%- endblock %}
