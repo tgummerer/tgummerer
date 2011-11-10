@@ -1,0 +1,30 @@
+---
+title: Web design with Django
+description: >
+    Project using Django
+created: !!timestamp '2011-10-19 10:00:00'
+tags:
+    - web design
+    - django
+---
+
+{% mark excerpt -%}
+
+A project using Django.
+
+{%- endmark %}
+
+
+Today I finished an other project, designing a photo website for a friend, nothing to complicated, but it needed two things I usually don't really like to do. The first are pictures, because I have to use a photo editing tool and usually the pics need to be saved in some place, which the photo editing tool can't magically know (That would be a great invention). Or they have to be uploaded to the server and can't just be remotely changed, like some code in the cloud. The other thing is the admin interface, which takes a lot of stupid code, authentication, maybe even some design, which no one but the site owner sees. But if it isn't there I'd have to update the site everytime, which would probably be a lot more work. Luckily I wanted to try something new, and decided to use <a href="https://www.djangoproject.com/">Django</a> for this project. Initially I just wanted to try out something new, but it turned out much better.
+
+<h2>Admin interface</h2>
+"Django makes it easier to build better Web apps more quickly and with less code". That's what they write on the projects frontpage. And it couldn't be more true, especially for the admin interface. Just create your database layout which is really easy with <a href="https://docs.djangoproject.com/en/1.3/intro/tutorial01/#creating-models">Models</a>. No SQL to remember, just some straight forward Python. What's even easier is <a href="https://docs.djangoproject.com/en/1.3/intro/tutorial02/#activate-the-admin-site">activating the admin site</a>. Just uncomment a few lines, and you have user authentication and every formular needed to fill your database. That makes Django a great choice, if you need a small admin interface. 
+
+<h2>Images</h2>
+The other thing I discovered to be great with Django was the images. First I had a simple uploader with the ImageField, that comes standard with Django. This wasn't completely satisfying, because it still required the user to resize the image before uploading, in order for them to have all the same size. And there were no thumbnails. But searching around the web I discovered the beautiful <a href="http://code.google.com/p/django-stdimage/">django-stdimage</a>, or even better the fork <a href="http://code.google.com/p/django-stdimage2/">django-stdimage2</a>. This libraries let you automatically resize the images, with just one parameter in the database model and create the thumbnails (which didn't work in django-stdimage, which is why I switched to the fork). Thanks to this library the usage of images got somewhat easy, which was well appreciated for this project with a lot of images.
+
+<h2>Compatibility</h2>
+A concern about using Django may be the compatibility with web hosts, since it needs Python to run. But nowadays every half decent hosting plan should include Python support. It may even work on <a href="http://www.godaddy.com/hosting/web-hosting.aspx?ci=9009">Godaddy Deluxe Hosting</a>, which really doesn't have a lot of features (Don't take my word for granted, it may also not work, because of the version of Python installed). 
+
+<h2>Conclusion</h2>
+I have yet to try out <a href="http://rubyonrails.org/">Ruby on Rails</a> and see if it has some similar features, but for projects similar to this Django might be the framework of my choice. Those two things mentioned here speed up the development a lot, and I probably have only scratched the surface of what Django can do, since this was my first experience with it.
